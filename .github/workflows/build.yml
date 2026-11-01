@@ -1,0 +1,24 @@
+name: Build and check
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build and test
+        run: |
+          bash scripts/build.sh
+          "build/Port Pocket.app/Contents/MacOS/PortPocket" --integration-test
+      - name: Archive app
+        run: ditto -c -k --sequesterRsrc --keepParent "build/Port Pocket.app" build/Port-Pocket.zip
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Port-Pocket-macOS
+          path: build/Port-Pocket.zip
+          retention-days: 14
