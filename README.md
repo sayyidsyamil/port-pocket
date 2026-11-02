@@ -9,7 +9,7 @@
 
 A minimal native macOS menu-bar app for discovering and managing local TCP listening ports. Built with Swift and SwiftUI, without third-party dependencies.
 
-**Preview v0.1.0.** Build from source using the instructions below. Signed, notarized installers are planned; they are not available yet.
+**Preview v0.1.0.** Install with Homebrew, or build from source below.
 
 <p align="center">
 <img src="docs/screenshots/light.png" width="340" alt="Port Pocket light appearance with three example local servers">
@@ -27,7 +27,19 @@ A minimal native macOS menu-bar app for discovering and managing local TCP liste
 - Hides a small list of system services by default; enable them in Settings.
 - Supports native light/dark appearance and launch at login.
 
-## Build and install
+## Download
+
+```bash
+brew install --cask sayyidsyamil/tap/port-pocket
+```
+
+Or grab `Port-Pocket-0.1.0.zip` from the [latest release](https://github.com/sayyidsyamil/port-pocket/releases/latest), unzip it, and move **Port Pocket.app** to `~/Applications`.
+
+Click the connected-drive icon in the menu bar to open it. If the notch or other icons hide it, hold **⌘ Command** and drag it closer to the clock.
+
+Preview builds are ad-hoc signed, not notarized. A zip saved by a browser carries the quarantine flag, so the first launch is blocked; either install with Homebrew, which avoids the flag, or allow the app once through **System Settings → Privacy & Security → Open Anyway**. Do not disable Gatekeeper globally.
+
+## Build from source
 
 Requires **macOS 13+** and Apple Command Line Tools.
 
@@ -40,9 +52,7 @@ bash scripts/install.sh
 
 The install script builds and checks the app before copying it to your Applications folder. To build without installing, run `bash scripts/build.sh`.
 
-The app is installed to **`~/Applications/Port Pocket.app`**. Click the connected-drive icon in the menu bar to open it. If the notch or other icons hide it, hold **⌘ Command** and drag it closer to the clock.
-
-The preview uses a local ad-hoc signature. It is not Developer ID signed or notarized. Builds target the architecture of the Mac running the script.
+Builds are universal (`arm64` + `x86_64`) and ad-hoc signed by default. Set `CODESIGN_IDENTITY` to a `Developer ID Application: …` identity to sign for distribution, then run `bash scripts/notarize.sh` to notarize and staple the result.
 
 ## Use it
 
@@ -117,11 +127,10 @@ docs/                Light/dark screenshots
 
 ## Preview roadmap
 
-- Signed and notarized downloadable builds.
+- Developer ID signing and notarization; the pipeline is in place and only needs a certificate.
 - Favorites and custom port labels.
 - Better project identification and framework hints.
 - Richer port-conflict explanations.
-- Universal Intel / Apple silicon packaging.
 
 ## Contributing
 

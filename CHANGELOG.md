@@ -2,6 +2,9 @@
 
 ## 0.1.0 — Initial preview
 
+- Universal `arm64` + `x86_64` app bundle.
+- Homebrew cask distribution.
+- Tag-driven release workflow with optional Developer ID signing and notarization.
 - Native macOS menu-bar panel with compact light/dark interface.
 - Local TCP listener discovery, IPv4/IPv6 deduplication, process and project labels.
 - Filtering by port, process, project, PID, and folder.
