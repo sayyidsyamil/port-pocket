@@ -37,7 +37,7 @@ Or grab `Port-Pocket-0.1.0.zip` from the [latest release](https://github.com/say
 
 Click the connected-drive icon in the menu bar to open it. If the notch or other icons hide it, hold **⌘ Command** and drag it closer to the clock.
 
-Preview builds are ad-hoc signed, not notarized. A zip saved by a browser carries the quarantine flag, so the first launch is blocked; either install with Homebrew, which avoids the flag, or allow the app once through **System Settings → Privacy & Security → Open Anyway**. Do not disable Gatekeeper globally.
+Preview builds are ad-hoc signed, not notarized. A zip saved by a browser carries the quarantine flag, so the first launch is blocked; either install with Homebrew, whose cask clears the flag, or allow the app once through **System Settings → Privacy & Security → Open Anyway**. Do not disable Gatekeeper globally.
 
 ## Build from source
 
