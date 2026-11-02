@@ -52,6 +52,8 @@ bash scripts/install.sh
 
 The install script builds and checks the app before copying it to your Applications folder. To build without installing, run `bash scripts/build.sh`.
 
+See [docs/RELEASING.md](docs/RELEASING.md) for signing, notarization, and the release process.
+
 Builds are universal (`arm64` + `x86_64`) and ad-hoc signed by default. Set `CODESIGN_IDENTITY` to a `Developer ID Application: …` identity to sign for distribution, then run `bash scripts/notarize.sh` to notarize and staple the result.
 
 ## Use it
